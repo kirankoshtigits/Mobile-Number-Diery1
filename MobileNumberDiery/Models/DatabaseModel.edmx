@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MobileNumberDieryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DieryRecord">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Person_FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="Person_LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Person_MobileNumber" Type="varchar" MaxLength="12" />
+          <Property Name="Person_HomeNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Person_City" Type="varchar" MaxLength="50" />
+          <Property Name="Person_Tehsil" Type="varchar" MaxLength="50" />
+          <Property Name="Person_District" Type="varchar" MaxLength="50" />
+          <Property Name="Person_State" Type="varchar" MaxLength="50" />
+          <Property Name="R_FK_CATID" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_ADMIN">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_NAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AD_PASSWORD" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CATEGORY">
+          <Key>
+            <PropertyRef Name="CAT_ID" />
+          </Key>
+          <Property Name="CAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAT_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CAT_PK_ADID" Type="int" />
+        </EntityType>
+        <Association Name="FK__DieryReco__R_FK___164452B1">
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+          <End Role="DieryRecord" Type="Self.DieryRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATEGORY">
+              <PropertyRef Name="CAT_ID" />
+            </Principal>
+            <Dependent Role="DieryRecord">
+              <PropertyRef Name="R_FK_CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_CATEG__CAT_P__1367E606">
+          <End Role="TBL_ADMIN" Type="Self.TBL_ADMIN" Multiplicity="0..1" />
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ADMIN">
+              <PropertyRef Name="AD_ID" />
+            </Principal>
+            <Dependent Role="TBL_CATEGORY">
+              <PropertyRef Name="CAT_PK_ADID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobileNumberDieryModelStoreContainer">
+          <EntitySet Name="DieryRecord" EntityType="Self.DieryRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DieryReco__R_FK___164452B1" Association="Self.FK__DieryReco__R_FK___164452B1">
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+            <End Role="DieryRecord" EntitySet="DieryRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_CATEG__CAT_P__1367E606" Association="Self.FK__TBL_CATEG__CAT_P__1367E606">
+            <End Role="TBL_ADMIN" EntitySet="TBL_ADMIN" />
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobileNumberDieryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DieryRecord">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Person_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Person_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Person_MobileNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Person_HomeNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Person_City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Person_Tehsil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Person_District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Person_State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="R_FK_CATID" Type="Int32" />
+          <NavigationProperty Name="TBL_CATEGORY" Relationship="Self.FK__DieryReco__R_FK___164452B1" FromRole="DieryRecord" ToRole="TBL_CATEGORY" />
+        </EntityType>
+        <EntityType Name="TBL_ADMIN">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AD_PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TBL_CATEGORY" Relationship="Self.FK__TBL_CATEG__CAT_P__1367E606" FromRole="TBL_ADMIN" ToRole="TBL_CATEGORY" />
+        </EntityType>
+        <EntityType Name="TBL_CATEGORY">
+          <Key>
+            <PropertyRef Name="CAT_ID" />
+          </Key>
+          <Property Name="CAT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CAT_PK_ADID" Type="Int32" />
+          <NavigationProperty Name="DieryRecords" Relationship="Self.FK__DieryReco__R_FK___164452B1" FromRole="TBL_CATEGORY" ToRole="DieryRecord" />
+          <NavigationProperty Name="TBL_ADMIN" Relationship="Self.FK__TBL_CATEG__CAT_P__1367E606" FromRole="TBL_CATEGORY" ToRole="TBL_ADMIN" />
+        </EntityType>
+        <Association Name="FK__DieryReco__R_FK___164452B1">
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+          <End Role="DieryRecord" Type="Self.DieryRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATEGORY">
+              <PropertyRef Name="CAT_ID" />
+            </Principal>
+            <Dependent Role="DieryRecord">
+              <PropertyRef Name="R_FK_CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_CATEG__CAT_P__1367E606">
+          <End Role="TBL_ADMIN" Type="Self.TBL_ADMIN" Multiplicity="0..1" />
+          <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ADMIN">
+              <PropertyRef Name="AD_ID" />
+            </Principal>
+            <Dependent Role="TBL_CATEGORY">
+              <PropertyRef Name="CAT_PK_ADID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobileNumberDieryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DieryRecords" EntityType="Self.DieryRecord" />
+          <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" />
+          <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" />
+          <AssociationSet Name="FK__DieryReco__R_FK___164452B1" Association="Self.FK__DieryReco__R_FK___164452B1">
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+            <End Role="DieryRecord" EntitySet="DieryRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_CATEG__CAT_P__1367E606" Association="Self.FK__TBL_CATEG__CAT_P__1367E606">
+            <End Role="TBL_ADMIN" EntitySet="TBL_ADMIN" />
+            <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MobileNumberDieryModelStoreContainer" CdmEntityContainer="MobileNumberDieryEntities">
+          <EntitySetMapping Name="DieryRecords">
+            <EntityTypeMapping TypeName="MobileNumberDieryModel.DieryRecord">
+              <MappingFragment StoreEntitySet="DieryRecord">
+                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+                <ScalarProperty Name="Person_FirstName" ColumnName="Person_FirstName" />
+                <ScalarProperty Name="Person_LastName" ColumnName="Person_LastName" />
+                <ScalarProperty Name="Person_MobileNumber" ColumnName="Person_MobileNumber" />
+                <ScalarProperty Name="Person_HomeNumber" ColumnName="Person_HomeNumber" />
+                <ScalarProperty Name="Person_City" ColumnName="Person_City" />
+                <ScalarProperty Name="Person_Tehsil" ColumnName="Person_Tehsil" />
+                <ScalarProperty Name="Person_District" ColumnName="Person_District" />
+                <ScalarProperty Name="Person_State" ColumnName="Person_State" />
+                <ScalarProperty Name="R_FK_CATID" ColumnName="R_FK_CATID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ADMIN">
+            <EntityTypeMapping TypeName="MobileNumberDieryModel.TBL_ADMIN">
+              <MappingFragment StoreEntitySet="TBL_ADMIN">
+                <ScalarProperty Name="AD_ID" ColumnName="AD_ID" />
+                <ScalarProperty Name="AD_NAME" ColumnName="AD_NAME" />
+                <ScalarProperty Name="AD_PASSWORD" ColumnName="AD_PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CATEGORY">
+            <EntityTypeMapping TypeName="MobileNumberDieryModel.TBL_CATEGORY">
+              <MappingFragment StoreEntitySet="TBL_CATEGORY">
+                <ScalarProperty Name="CAT_ID" ColumnName="CAT_ID" />
+                <ScalarProperty Name="CAT_NAME" ColumnName="CAT_NAME" />
+                <ScalarProperty Name="CAT_PK_ADID" ColumnName="CAT_PK_ADID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

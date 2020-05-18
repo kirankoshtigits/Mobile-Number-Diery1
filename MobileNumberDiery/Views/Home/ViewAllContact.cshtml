@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MobileNumberDiery.Models.DieryRecord>
+
+@{
+    ViewBag.Title = "ViewAllContact";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 style=" font-size:50px;font-family:'Times New Roman';color:#0094ff;font-weight:bold; text-align:center">View All Contact</h2>
+
+<table class="table">
+    <tr style="font-family:'Times New Roman';font-size:20px">
+        <th>
+            @Html.DisplayNameFor(model => model.Person_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_HomeNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_Tehsil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_District)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person_State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_CATEGORY.CAT_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="font-family:'Times New Roman';font-size:18px">
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_HomeNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_Tehsil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_District)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person_State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_CATEGORY.CAT_NAME)
+        </td>
+    </tr>
+}
+
+</table>

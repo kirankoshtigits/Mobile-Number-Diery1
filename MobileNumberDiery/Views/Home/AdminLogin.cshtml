@@ -1,0 +1,50 @@
+﻿@model MobileNumberDiery.Models.TBL_ADMIN
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body{
+        background-color:aliceblue;
+    }
+</style>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<h2 style="font-family:'Times New Roman';font-size:50px;text-align:center;padding-top:150px">Admin Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="col-lg-offset-4">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h2 style="font-family:'Times New Roman';font-size:23px; color:#0026ff;">
+                @Html.LabelFor(model => model.AD_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AD_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AD_NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h2 style="font-family:'Times New Roman';font-size:23px; color:#0026ff">
+                @Html.LabelFor(model => model.AD_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.AD_PASSWORD, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AD_PASSWORD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="padding-top:15px">
+                <input type="submit" style="font-size:20px;font-family:'Times New Roman';" value="Login" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</div>
+}
+<h2 style="font-family:'Times New Roman';font-size:30px;color:red;text-align:center">@ViewBag.msg</h2>

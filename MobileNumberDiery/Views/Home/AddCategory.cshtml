@@ -1,0 +1,63 @@
+﻿@model MobileNumberDiery.Models.TBL_CATEGORY
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+      
+<h2 style=" font-size:50px;font-family:'Times New Roman';color:#0094ff;font-weight:bold; text-align:center">Add Category</h2>
+<div style="font-family:'Times New Roman';font-size:20px">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CAT_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CAT_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CAT_NAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.CAT_PK_ADID, "CAT_PK_ADID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CAT_PK_ADID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CAT_PK_ADID, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" style="font-size:20px;font-family:'Times New Roman'; font-weight:bold" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+    <h2 style=" font-size:20px;font-family:'Times New Roman';color:#0094ff;font-weight:bold; text-align:center">@ViewBag.Message</h2>
+
+    <div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>View Group By Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewData["list"] as List<MobileNumberDiery.Models.TBL_CATEGORY>)
+                {
+                    <tr style="font-size:18px">
+                        <td>@item.CAT_ID</td>
+                        <td>@item.CAT_NAME</td>
+                        <td><a class="btn btn-info btn-sm" href="@Url.Action("ViewAllContact",new {id=@item.CAT_ID})"> View All Number of this Group</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model MobileNumberDiery.Models.DieryRecord
+
+@{
+    ViewBag.Title = "RegisterContact";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<h2 style="font-family:'Times New Roman';font-size:50px;text-align:center;color:#b200ff;font-weight:bold">Register Contact</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr />
+        <div class="form-group">
+            <h2 style="font-family:'Times New Roman';font-size:20px">
+                @Html.LabelFor(model => model.R_FK_CATID, "Select Category", htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-4">
+                @Html.DropDownList("R_FK_CATID", ViewBag.list as SelectList, "--Select--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.R_FK_CATID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group row">
+            <h2 style="font-family:'Times New Roman';font-size:20px">
+                @Html.LabelFor(model => model.Person_FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <h2 style="font-family:'Times New Roman';font-size:20px">
+                @Html.LabelFor(model => model.Person_LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h2 style="font-family:'Times New Roman';font-size:20px">
+                @Html.LabelFor(model => model.Person_MobileNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_MobileNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <h2 style="font-family:'Times New Roman';font-size:20px">
+                @Html.LabelFor(model => model.Person_HomeNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_HomeNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_HomeNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h2 style="font-family:'Times New Roman';font-size:20px;">
+                @Html.LabelFor(model => model.Person_City, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_City, "", new { @class = "text-danger" })
+            </div>
+
+            <h2 style="font-family:'Times New Roman';font-size:20px; ">
+                @Html.LabelFor(model => model.Person_Tehsil, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_Tehsil, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_Tehsil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h2 style="font-family:'Times New Roman';font-size:20px;">
+                @Html.LabelFor(model => model.Person_District, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_District, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_District, "", new { @class = "text-danger" })
+            </div>
+
+            <h2 style="font-family:'Times New Roman';font-size:20px">
+                @Html.LabelFor(model => model.Person_State, htmlAttributes: new { @class = "control-label col-md-2" })
+            </h2>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Person_State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Person_State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="padding-top:20px">
+                <input type="submit" style="font-size:20px;font-family:'Times New Roman'; font-weight:bold" value="Register" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+<h3 style="font-family:'Times New Roman';font-size:30px;color:red;text-align:center">@TempData["msg"]</h3>
+

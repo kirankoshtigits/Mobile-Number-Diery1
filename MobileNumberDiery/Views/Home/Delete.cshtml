@@ -1,0 +1,96 @@
+﻿@model MobileNumberDiery.Models.DieryRecord
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h3  style="font-size:40px;font-family:'Times New Roman'; text-align:center;color:cornflowerblue;font-weight:bold" >Are you sure you want to delete this record</h3>
+<div class="col-lg-offset-4" style="font-size:20px;font-family:'Times New Roman';">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_MobileNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_MobileNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_HomeNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_HomeNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_City)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_City)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_Tehsil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_Tehsil)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_District)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_District)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_State)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Person_State)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TBL_CATEGORY.CAT_NAME)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TBL_CATEGORY.CAT_NAME)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" style="font-size:20px;font-family:'Times New Roman';" value=" Conform Delete" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>
