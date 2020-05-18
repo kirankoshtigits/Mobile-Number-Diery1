@@ -8,4 +8,16 @@ Sql Server : 2014   \
 
 1. The DashBoard of Mobile Number Diery. 
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/kirankoshtigits/Web-Based-Mobile-Number-Diery/blob/ph-pages/Dashboard.png)   /
+
+2. First Create Catogory and Display List Catogory Wise. 
+
+![alt text](https://github.com/kirankoshtigits/Web-Based-Mobile-Number-Diery/blob/ph-pages/Category.png)   /
+
+3. After Category Wise Register the Number
+
+![alt text](https://github.com/kirankoshtigits/Web-Based-Mobile-Number-Diery/blob/ph-pages/Regi_Number.png)   /
+
+4. Display All Number Register in your Diery.
+
+![alt text](https://github.com/kirankoshtigits/Web-Based-Mobile-Number-Diery/blob/ph-pages/NumberList.png)   
